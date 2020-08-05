@@ -1,11 +1,12 @@
 package org.nyaxs.hush.repository;
 
 import org.nyaxs.hush.entity.Users;
-import org.springframework.data.redis.core.HashOperations;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.data.redis.core.StringRedisTemplate;
+import org.nyaxs.hush.service.RedisService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.*;
 import org.springframework.stereotype.Repository;
 
+import javax.annotation.Resource;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -18,15 +19,42 @@ import java.util.Map;
  **/
 @Repository
 public class UsersDao {
-    private final RedisTemplate redisTemplate;
 
-    public UsersDao(StringRedisTemplate redisTemplate) {
-        this.redisTemplate = redisTemplate;
-    }
+    @Autowired
+    private StringRedisTemplate stringRedisTemplate;
 
-    public void getUsers(Users users){
-        HashOperations<String,Object,Object> hashOperations = redisTemplate.opsForHash();
-        Map<String,String> map = new HashMap<String, String>();
+    @Autowired
+    private RedisTemplate redisTemplate;
 
+    @Resource
+    private ValueOperations<String,Object> valueOperations;
+
+    @Autowired
+    private HashOperations<String, String, Object> hashOperations;
+
+    @Autowired
+    private ListOperations<String, Object> listOperations;
+
+    @Autowired
+    private SetOperations<String, Object> setOperations;
+
+    @Autowired
+    private ZSetOperations<String, Object> zSetOperations;
+
+    @Resource
+    private RedisService redisService;
+
+    public Users getUsers(Users users){
+        String name = users.getName();
+        if(hashOperations.get(users.getName(),"password")==null){
+            return null;
+        }
+        String pwd = (String) hashOperations.get(users.getName(),"password");
+        if(!users.getPassword().equals(pwd)){
+            return null;
+        }
+        Users result = new Users();
+        result.setNickname(hashOperations.get(name,"nickname").toString());
+        return result;
     }
 }

@@ -19,6 +19,7 @@ import java.util.List;
 public class Users {
     private String id;
     private String name;
+    private String password;
     private String nickname;
     private String signature;
     private String icon;
