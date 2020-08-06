@@ -23,7 +23,7 @@ public class GroupsDao {
     }
 
     public void insertUsers(Users user){
-         
+
     }
 
 }
