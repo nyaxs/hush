@@ -1,10 +1,9 @@
 package org.nyaxs.hush.controller;
 
 import org.nyaxs.hush.entity.Groups;
+import org.nyaxs.hush.entity.Messages;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @ClassName MessageController
@@ -24,6 +23,16 @@ public class MessageController {
     @GetMapping("messages/{groupId}")
     public void getMessagesByGroupId(@PathVariable int groupId){
 
+    }
+
+    @PostMapping("message/send")
+    public void send(@RequestBody Messages message){
+
+    }
+
+    @GetMapping("message/save")
+    public void save(){
+        
     }
 
 }
