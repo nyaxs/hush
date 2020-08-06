@@ -3,7 +3,9 @@ package org.nyaxs.hush.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
@@ -19,6 +21,8 @@ import java.util.List;
 public class Groups {
     private String id;
     private String founderId;
+    @NotBlank(message = "name 不为空")
+    @Size(min = 1,max = 16)
     private String name;
     private String about;
     private String icon;
