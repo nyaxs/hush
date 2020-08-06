@@ -32,7 +32,7 @@ public class MessageController {
 
     @GetMapping("message/save")
     public void save(){
-        
+
     }
 
 }
