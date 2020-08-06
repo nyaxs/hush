@@ -8,5 +8,10 @@ package org.nyaxs.hush.repository;
  * @Version 1.0
  **/
 public class MessageDao {
-    
+    public void getMessage(){
+
+    }
+    public void sendMessage(){
+        
+    }
 }
