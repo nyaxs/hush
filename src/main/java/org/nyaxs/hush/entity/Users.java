@@ -3,6 +3,7 @@ package org.nyaxs.hush.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.validator.constraints.NotBlank;
 
 import java.util.List;
 
@@ -18,7 +19,9 @@ import java.util.List;
 @AllArgsConstructor
 public class Users {
     private String id;
+    @NotBlank
     private String name;
+    @NotBlank
     private String password;
     private String nickname;
     private String signature;
