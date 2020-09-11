@@ -1,7 +1,6 @@
 package org.nyaxs.hush.controller;
 
-import org.nyaxs.hush.entity.Users;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.nyaxs.hush.entity.User;
 import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -27,14 +26,14 @@ public class LoginController {
     }
 
     @GetMapping("login")
-    public Users login(@Valid @RequestBody Users users){
-        Users user = new Users();
+    public User login(@Valid @RequestBody User users){
+        User user = new User();
 
         return users;
     }
 
     @PostMapping("register")
-    public void register(@RequestBody Users user){
+    public void register(@RequestBody User user){
 
     }
 

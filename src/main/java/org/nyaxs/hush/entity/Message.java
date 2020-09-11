@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Messages {
+public class Message {
     private String id;
     private String groupId;
     private String userId;

@@ -1,8 +1,6 @@
 package org.nyaxs.hush.controller;
 
-import org.nyaxs.hush.entity.Groups;
-import org.nyaxs.hush.entity.Messages;
-import org.springframework.stereotype.Controller;
+import org.nyaxs.hush.entity.Message;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,7 +24,7 @@ public class MessageController {
     }
 
     @PostMapping("message/send")
-    public void send(@RequestBody Messages message){
+    public void send(@RequestBody Message message){
 
     }
 

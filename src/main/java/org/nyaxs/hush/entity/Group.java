@@ -5,30 +5,28 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.validator.constraints.NotBlank;
 
+import javax.validation.constraints.Size;
 import java.util.List;
 
 /**
- * @ClassName Users
- * @Description TODO:
+ * @ClassName Groups
+ * @Description TODO: 小组的实体类
  * @Author nyaxs
- * @Date 2020-08-05 16:30
+ * @Date 2020-08-05 16:29
  * @Version 1.0
  **/
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class Users {
+@NoArgsConstructor
+public class Group {
     private String id;
-    @NotBlank
+    private String founderId;
+    @NotBlank(message = "name 不为空")
+    @Size(min = 1,max = 16)
     private String name;
-    @NotBlank
-    private String password;
-    private String nickname;
-    private String signature;
+    private String about;
     private String icon;
-    private List<Groups> groups;
-    private List<String> groupsId;
-    private List<Users> friends;
-    private List<String> friendsId;
     private String status;
+    private List<User> users;
+    private List<Message> messages;
 }
